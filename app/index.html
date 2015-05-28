@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <title>Angular Material - Starter App</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+    <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css"/>
+    <link rel="stylesheet" href="assets/app.css"/>
+  </head>
+
+  <body ng-app="starterApp" layout="row" ng-controller="BiblioController as ul">
+
+  <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
+                md-component-id="left"
+                md-is-locked-open="$mdMedia('gt-sm')">
+
+    <md-toolbar class="md-whiteframe-z1">
+      <h1></h1>
+    </md-toolbar>
+
+	<!--<md-input-container>
+		<label>Rechercher référence</label>
+		<input type="text">
+	</md-input-container>
+
+	<div layout="row">
+		<h2>Catégories</h2>
+		<md-button class="md-fab md-mini" aria-label="Mini FAB">+</md-button>
+	</div>
+
+	
+    <md-list>
+      <md-list-item ng-repeat="it in ul.categories">
+          <md-button ng-click="" ng-class="{'selected' : it === ul.selected }">
+            <md-icon class="avatar" style="color: {{it.color}}"></md-icon>
+            {{it.name}}
+          </md-button>
+      </md-list-item>
+    </md-list>-->
+
+	<div layout="column">
+		<md-content class="md-padding autocomplete" layout="column">
+			<md-chips 
+				ng-model="ul.selectedCategories" 
+				md-autocomplete-snap 
+				md-require-match>
+				<md-autocomplete
+					md-selected-item="ul.selectedCategory"
+					md-search-text="ul.searchTextCategory"
+					md-items="item in ul.querySearchCategory(ul.searchTextCategory)"
+					md-item-text="item.name"
+					placeholder="Sélectionner categorie">
+						<span md-highlight-text="ul.searchTextCategory">{{item.name}}</span>
+				</md-autocomplete>
+				<md-chip-template>
+					<strong>{{$chip.name}}</strong>
+				</md-chip-template>
+			</md-chips>	
+			
+			<p>Liste des catégories :</p>
+			<md-list>
+				<md-list-item ng-repeat="it in ul.categories">
+					<md-button ng-click="ul.selectCategory(it)" ng-class="{'selected' : it === ul.selected }">
+						{{it.name}}
+					</md-button>
+				</md-list-item>
+			</md-list>
+			<div layout="row" layout-align="end center">
+				<md-button class="md-fab md-mini" aria-label="Ajouter Catégorie" ng-click="ul.showAddCategoryDialog($event)">+</md-button>
+			</div>
+	
+<!--			<md-list class="fixedRows">
+				<md-subheader class="md-no-sticky">Contacts</md-subheader>
+				<md-list-item class="md-2-line contact-item" ng-repeat="(index, contact) in ctrl.allContacts" ng-if="ctrl.contacts.indexOf(contact) < 0">
+					<img ng-src="{{contact.image}}" class="md-avatar" alt="{{contact.name}}" />
+					<div class="md-list-item-text compact">
+						<h3>{{contact.name}}</h3>
+						<p>{{contact.email}}</p>
+					</div>
+				</md-list-item>
+				<md-list-item class="md-2-line contact-item selected" ng-repeat="(index, contact) in ctrl.contacts">
+					<img ng-src="{{contact.image}}" class="md-avatar" alt="{{contact.name}}" />
+					<div class="md-list-item-text compact">
+						<h3>{{contact.name}}</h3>
+						<p>{{contact.email}}</p>
+					</div>
+				</md-list-item>
+			</md-list>-->
+		</md-content>
+	</div>
+
+  </md-sidenav>
+
+
+  <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
+
+    <md-toolbar layout="row" class="md-whiteframe-z1">
+      <h1>Bibliographie</h1>
+    </md-toolbar>
+
+<!--    <md-content flex id="content">
+        <md-icon md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon>
+        <h2>{{ul.selected.name}}</h2>
+        <p>{{ul.selected.content}}</p>
+
+        <md-button class="contact" md-no-ink ng-click="ul.showContactOptions($event)" aria-label="Contact User">
+          <md-tooltip>Contact {{ ul.selected.name }}</md-tooltip>
+          <md-icon md-svg-icon="share"></md-icon>
+        </md-button>
+      </md-content>-->
+
+  </div>
+
+    <script src="./bower_components/angular/angular.js"></script>
+    <script src="./bower_components/angular-animate/angular-animate.js"></script>
+    <script src="./bower_components/angular-aria/angular-aria.js"></script>
+    <script type="text/javascript" src="./bower_components/angular-material/angular-material.js"></script>
+
+<!--    <script src="./src/users/Users.js"></script>
+    <script src="./src/users/UserController.js"></script>
+    <script src="./src/users/UserService.js"></script>-->
+
+    <script src="./src/biblio/Biblio.js"></script>
+    <script src="./src/biblio/BiblioController.js"></script>
+
+    <script src="./src/biblio/CategoryService.js"></script>
+    <script src="./src/biblio/ReferenceService.js"></script>
+
+    <script type="text/javascript">
+
+          angular
+              .module('starterApp', ['ngMaterial', 'biblio'])
+              .config(function($mdThemingProvider, $mdIconProvider){
+
+                  $mdIconProvider
+                      .defaultIconSet("./assets/svg/avatars.svg", 128)
+                      .icon("menu"       , "./assets/svg/menu.svg"        , 24)
+                      .icon("share"      , "./assets/svg/share.svg"       , 24)
+                      .icon("google_plus", "./assets/svg/google_plus.svg" , 512)
+                      .icon("hangouts"   , "./assets/svg/hangouts.svg"    , 512)
+                      .icon("twitter"    , "./assets/svg/twitter.svg"     , 512)
+                      .icon("phone"      , "./assets/svg/phone.svg"       , 512);
+
+                      $mdThemingProvider.theme('default')
+                          .primaryPalette('brown')
+                          .accentPalette('red');
+
+              });
+
+    </script>
+
+  </body>
+</html>
