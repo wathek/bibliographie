@@ -16,6 +16,7 @@
 	function BiblioController($scope, categoryService, referenceService, $mdSidenav, $mdBottomSheet, $mdDialog, $log, $q) {
 		var self = this;
 
+		$scope.newCategoryName = null;
 		self.selectedCategories	= [ ];
 		self.searchTextCategory = null;
 		self.selectedCategory = null;
