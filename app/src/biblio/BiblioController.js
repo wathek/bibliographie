@@ -92,8 +92,8 @@
 			}).then(function(answer) {
 				console.log(answer);
 				if (answer.name != null) {
+					answer._lowername = answer.name.toLowerCase();
 					self.categories.push(answer);
-					console.log(self.categories);
 				}
 			}, function() {
 			});
