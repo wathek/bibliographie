@@ -11,7 +11,8 @@
 				<md-radio-group ng-model="selectedColor" class="md-primary">
 					<div layout="row" layout-wrap layout-align="center center">
 						<md-radio-button ng-repeat="d in colorsList"
-							ng-value="d.css">
+							ng-value="d.css"
+							aria-label="{{ d.name}}">
 							<div class="{{ d.css }}" style="width:20px; height: 20px;"></div>
 						</md-radio-button>
 					</div>
