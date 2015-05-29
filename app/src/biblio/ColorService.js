@@ -16,79 +16,79 @@
 		var colors = [
 			{
 				name: 'gray',
-				css: '.gray',
+				css: 'gray',
 			},
 			{
 				name: 'red',
-				css: '.red'
+				css: 'red'
 			},
 			{
 				name: 'pink',
-				css: '.pink'
+				css: 'pink'
 			},
 			{
 				name: 'purple',
-				css: '.purple'
+				css: 'purple'
 			},
 			{
 				name: 'deep-purple',
-				css: '.deep-purple'
+				css: 'deep-purple'
 			},
 			{
 				name: 'indigo',
-				css: '.indigo'
+				css: 'indigo'
 			},
 			{
 				name: 'blue',
-				css: '.blue'
+				css: 'blue'
 			},
 			{
 				name: 'light-blue',
-				css: '.light-blue'
+				css: 'light-blue'
 			},
 			{
 				name: 'cyan',
-				css: '.cyan'
+				css: 'cyan'
 			},
 			{
 				name: 'teal',
-				css: '.teal'
+				css: 'teal'
 			},
 			{
 				name: 'green',
-				css: '.green'
+				css: 'green'
 			},
 			{
 				name: 'light-green',
-				css: '.light-gree'
+				css: 'light-green'
 			},
 			{
 				name: 'lime',
-				css: '.lime'
+				css: 'lime'
 			},
 			{
 				name: 'yellow',
-				css: '.yellow'
+				css: 'yellow'
 			},
 			{
 				name: 'amber',
-				css: '.amber'
+				css: 'amber'
 			},
 			{
 				name: 'orange',
-				css: '.orange'
+				css: 'orange'
 			},
 			{
 				name: 'deep-orange',
-				css: '.deep-orange'
+				css: 'deep-orange'
 			},
 			{
 				name: 'brown',
-				css: '.brown'
+				css: 'brown'
 			},
 			{
 				name: 'blue-grey',
-				css: '.blue-grey'
+				css: 'blue-grey'
 			}
 		];
 

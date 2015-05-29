@@ -67,7 +67,10 @@
 			<md-list>
 				<md-list-item ng-repeat="it in ul.categories">
 					<md-button ng-click="ul.selectCategory(it)" ng-class="{'selected' : it === ul.selected }">
-						{{it.name}}
+						<div layout="row" layout-align="space-between center">
+							{{it.name}}
+							<div class="{{it.color}}" style="width: 20px; height: 20px"></div>
+						</div>
 					</md-button>
 				</md-list-item>
 			</md-list>
@@ -130,6 +133,7 @@
     <script src="./src/biblio/BiblioController.js"></script>
 
     <script src="./src/biblio/CategoryService.js"></script>
+    <script src="./src/biblio/ColorService.js"></script>
     <script src="./src/biblio/ReferenceService.js"></script>
 
     <script type="text/javascript">

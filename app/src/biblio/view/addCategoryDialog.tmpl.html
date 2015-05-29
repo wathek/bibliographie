@@ -6,12 +6,16 @@
 				<md-input-container>
 					<label>Nom</label>
 					<input ng-model="newCategoryName">
-					
-					<md-select placeholder="Pick" ng-model="someVal">
-						<md-option value="1"><div style="background-color: #f44336; width:20px; height: 20px;"></div></md-option>
-						<md-option value="2"><div style="background-color: #009688; width:20px; height: 20px;"></div></md-option>
-					</md-select>
 				</md-input-container>
+
+				<md-radio-group ng-model="selectedColor" class="md-primary">
+					<div layout="row" layout-wrap layout-align="center center">
+						<md-radio-button ng-repeat="d in colorsList"
+							ng-value="d.css">
+							<div class="{{ d.css }}" style="width:20px; height: 20px;"></div>
+						</md-radio-button>
+					</div>
+				</md-radio-group>
 			</div>
 		</md-dialog-content>
 

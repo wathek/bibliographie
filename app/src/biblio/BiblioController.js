@@ -2,7 +2,7 @@
 
 	angular.module('biblio')
 		   .controller('BiblioController', [
-				'$scope', 'categoryService', 'referenceService', '$mdSidenav', '$mdBottomSheet', '$mdDialog', '$log', '$q',
+				'$scope', 'categoryService', 'colorService', 'referenceService', '$mdSidenav', '$mdBottomSheet', '$mdDialog', '$log', '$q',
 				BiblioController
 			]);
 
@@ -13,10 +13,13 @@
 	* @param avatarsService
 	* @constructor
 	*/
-	function BiblioController($scope, categoryService, referenceService, $mdSidenav, $mdBottomSheet, $mdDialog, $log, $q) {
+	function BiblioController($scope, categoryService, colorService, referenceService, $mdSidenav, $mdBottomSheet, $mdDialog, $log, $q) {
 		var self = this;
 
 		$scope.newCategoryName = null;
+		$scope.selectedColor = colorService[0].css;
+		$scope.colorsList = colorService;
+
 		self.selectedCategories	= [ ];
 		self.searchTextCategory = null;
 		self.selectedCategory = null;
@@ -87,14 +90,17 @@
 				templateUrl: './src/biblio/view/addCategoryDialog.tmpl.html',
 				targetEvent: ev,
 			}).then(function(answer) {
-				console.log('You said the information was "' + answer + '".');
+				console.log(answer);
+				if (answer.name != null) {
+					self.categories.push(answer);
+					console.log(self.categories);
+				}
 			}, function() {
-				console.log('You cancelled the dialog.');
 			});
 		}
 
 		$scope.answer = function(answer) {
-			$mdDialog.hide(answer);
+			$mdDialog.hide({name: $scope.newCategoryName, color: $scope.selectedColor, description: ''});
 		};
 
 		/**
