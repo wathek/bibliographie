@@ -3,8 +3,23 @@
 	angular.module('biblio')
 		   .controller('BiblioController', [
 				'$scope', 'categoryService', 'colorService', 'referenceService', '$mdSidenav', '$mdBottomSheet', '$mdDialog', '$log', '$q',
-				BiblioController
-			]);
+				BiblioController])
+		   .directive('reference', function() {
+				return {
+					restrict: 'E',
+					transclude: true,
+					scope: {
+						data: '@'
+					},
+					template: '<ng-include src="template" />',
+					link: function(scope, element, attrs) {
+						attrs.$observe('data', function(val) {
+							var data = angular.fromJson(scope.data);
+							scope.template = './src/biblio/view/reference-' + data.type + '.tmpl.html';
+						});
+					}
+				};
+			});
 
 	/**
 	* Main Controller for the Angular Material Starter App
@@ -20,16 +35,21 @@
 		$scope.selectedColor = colorService[0].css;
 		$scope.colorsList = colorService;
 
+		self.searchReference = null
+
 		self.selectedCategories	= [ ];
 		self.searchTextCategory = null;
 		self.selectedCategory = null;
 		self.querySearchCategory = querySearchCategory;
 		self.categories			= [ ];
 
+		self.references			= [ ];
+
 		self.showAddCategoryDialog = showAddCategoryDialog;
 		self.selectCategory		= selectCategory;
 		self.toggleList			= toggleCategoriesList;
-		self.showContactOptions	= showContactOptions;
+
+		self.addNewReference = showAddNewReference;
 
 		// Load all registered categories
 
@@ -40,8 +60,9 @@
 
 		referenceService.loadAllReferences()
 						.then(function(references) {
-		//					console.log(references);
+							self.references = [].concat(references);
 						});
+
 
 		// *********************************
 		// Internal methods
@@ -106,7 +127,7 @@
 		/**
 		* Show the bottom sheet
 		*/
-		function showContactOptions($event) {
+		function showAddNewReference($event) {
 			var user = self.selected;
 
 			return $mdBottomSheet.show({
