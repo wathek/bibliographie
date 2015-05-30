@@ -110,21 +110,22 @@
 			<h1>Bibliographie</h1>
 		</md-toolbar>
 
-	<md-content flex id="content">
-		<div layout="row" layout-align="end center">
+	<md-content flex id="content" layout-padding style="overflow-y: auto">
+		<div layout="row" layout-align="space-between center">
+			<form name="projectForm" flex>
+				<md-input-container>
+					<label>Rechercher référence</label>
+					<input name="description" ng-model="ul.searchReference">
+				</md-input-container>
+			</form>
+
 			<md-button class="md-fab md-mini green" aria-label="Ajouter Référence" ng-click="ul.addNewReference($event)">+</md-button>
 		</div>
-		<form name="projectForm">
-			<md-input-container>
-				<label>Rechercher référence</label>
-				<input name="description" ng-model="ul.searchReference">
-			</md-input-container>
-		</form>
 	
 		<md-list>
 			<md-subheader class="md-no-sticky">Liste des références</md-subheader>
 			<md-list-item ng-repeat="ref in ul.references" ng-click="goToRef(ref.url, $event)" style="margin-bottom: 10px;">
-				<reference data="{{ ref }}"></reference>
+				<reference data="{{ ref }}" aria-label="a rajouter"></reference>
 <!--				<div layout="column">
 					<div>{{ ref.name }}</div>
 					<div layout="row" layout-align="start center">

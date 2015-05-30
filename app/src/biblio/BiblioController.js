@@ -9,14 +9,13 @@
 					restrict: 'E',
 					transclude: true,
 					scope: {
-						data: '@'
+						data: '@?'
 					},
 					template: '<ng-include src="template" />',
 					link: function(scope, element, attrs) {
-						attrs.$observe('data', function(val) {
-							var data = angular.fromJson(scope.data);
-							scope.template = './src/biblio/view/reference-' + data.type + '.tmpl.html';
-						});
+						var data = angular.fromJson(scope.data);
+						scope.ref = data;
+						scope.template = './src/biblio/view/reference-' + data.type + '.tmpl.html';
 					}
 				};
 			});

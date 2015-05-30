@@ -2,44 +2,21 @@
 	'use strict';
 
 	angular.module('biblio')
-		.service('categoryService', ['$q', CategoryService]);
+		.service('categoryService', ['$q', '$http', 'API_ENDPOINT', CategoryService]);
 
-	/**
-	* Users DataService
-	* Uses embedded, hard-coded data model; acts asynchronously to simulate
-	* remote data service call(s).
-	*
-	* @returns {{loadAll: Function}}
-	* @constructor
-	*/
-	function CategoryService($q){
-		var categories = [
-			{
-				name: 'Psychologie',
-				color: 'red',
-				description: ''
-			},
-			{
-				name: 'Informatique',
-				color: 'green',
-				description: ''
-			},
-			{
-				name: 'Sociologie',
-				color: 'blue',
-				description: ''
-			}
-		];
-
-		// Promise-based API
+	function CategoryService($q, $http, API_ENDPOINT){
 		return {
 			loadAllCategories : function() {
-				// Simulate async nature of real remote calls
-				//return $q.when(categories);
-				return $q.when(categories.map(function (cat) {
-					cat._lowername = cat.name.toLowerCase();
-					return cat;
-				}));
+				var promise = $http.get(API_ENDPOINT + 'categories').then(function(results) {
+					var data = $q.when(results.data.map(function (cat) {
+						cat._lowername = cat.name.toLowerCase();
+						return cat;
+					}));
+					
+					return data;
+				});
+
+				return promise;
 			}
 		};
 	}
