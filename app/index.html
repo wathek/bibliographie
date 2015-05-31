@@ -126,14 +126,6 @@
 			<md-subheader class="md-no-sticky">Liste des références</md-subheader>
 			<md-list-item ng-repeat="ref in ul.references" ng-click="goToRef(ref.url, $event)" style="margin-bottom: 10px;">
 				<reference data="{{ ref }}" aria-label="a rajouter"></reference>
-<!--				<div layout="column">
-					<div>{{ ref.name }}</div>
-					<div layout="row" layout-align="start center">
-						<div ng-repeat="cat in ref.categories" style="margin-left: 15px; color: white; padding: 0 10px 0 10px; border-radius: 20px; font-size: 10px;" class="{{cat.color}}">
-							{{cat.name}}
-						</div>
-					</div>
-				</div>-->
 			</md-list-item>
 		</md-list>	
 	</md-content>
