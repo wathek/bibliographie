@@ -3,19 +3,24 @@
 </span>-->
 
 
-<div>
+<div layout="row" layout-align="center center">
 
-
-	<div class="article-def">
-		<span ng-repeat='author in ref.author' class="article-author">{{ author.lastname }}, {{ author.firstname }},</span>
-		<span class="article-title">"{{ ref.title }}",</span>
-		<span class="article-journal">{{ ref.journal }},</span>
-		<span class="article-date">{{ ref.date }}</span>
-		<span class="article-point">.</span>
+	<div flex="5">
+		<img ng-src="assets/svg/article-icon.svg" class="face article-icon" alt="article">
 	</div>
-	
-	<div class="article-categories">
-		<span ng-repeat='cat in ref.categories' class='article-category {{ cat.color }}'>{{ cat.name }}</span>
+
+	<div flex="95">
+		<div class="article-def">
+			<span ng-repeat='author in ref.author' class="article-author">{{ author.lastname }}, {{ author.firstname }},</span>
+			<span class="article-title">"{{ ref.title }}",</span>
+			<span class="article-journal">{{ ref.journal }},</span>
+			<span class="article-date">{{ ref.date }}</span>
+			<span class="article-point">.</span>
+		</div>
+		
+		<div class="article-categories">
+			<span ng-repeat='cat in ref.categories' class='article-category {{ cat.color }}'>{{ cat.name }}</span>
+		</div>
 	</div>
 
 </div>
