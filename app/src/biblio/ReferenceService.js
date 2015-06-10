@@ -8,12 +8,12 @@
 		var references = [
 			{
 				author: [
-					{firstname: 'firstname1', lastname: 'lastname1', email: ''},
-					{firstname: 'firstname2', lastname: 'lastname2', email: ''}
+					{firstname: 'L.', lastname: 'Devillers', email: ''},
+					{firstname: 'I.', lastname: 'Vasilescu', email: ''}
 				],
-				year: '',
-				journal: '',
-				title: 'L. Devillers, I. Vasilescu: “Reliability of Lexical and Prosodic cues in two real-life spoken dialog corpora”, LREC, Lisbonne, May 2004.',
+				date: 'May 2004',
+				journal: 'LREC',
+				title: 'Reliability of Lexical and Prosodic cues in two real-life spoken dialog corpora',
 				categories: [
 					{
 						name: 'Psychologie',
@@ -29,13 +29,15 @@
 			},
 			{
 				author: [
-					{firstname: 'firstname3', lastname: 'lastname3', email: ''},
-					{firstname: 'firstname4', lastname: 'lastname4', email: ''},
-					{firstname: 'firstname5', lastname: 'lastname5', email: ''}
+					{firstname: 'A.', lastname: 'Batliner', email: ''},
+					{firstname: 'K.', lastname: 'Fischer', email: ''},
+					{firstname: 'R.', lastname: 'Huber', email: ''},
+					{firstname: 'J.', lastname: 'Spilker', email: ''},
+					{firstname: 'E.', lastname: 'Noth', email: ''}
 				],
-				year: '',
-				journal: '',
-				title: 'A. Batliner, K. Fischer, R. Huber, J. Spilker, E. Noth, "Desperately Seeking Emotion or: Actors, Wizards and Human Beings", Proceedings of ITRW on Speech and Emotion, Newcastle, Northern Ireland, UK, 2000.',
+				date: '2000',
+				journal: 'Proceedings ofr ITRW on Speech and Emotion',
+				title: 'Desperately Seeking Emotion or: Actors, Wizards and Human Beings, Newcastle, Northern Ireland, UK, 2000.',
 				categories: [
 					{
 						name: 'Sociologie',
@@ -46,10 +48,14 @@
 				added_at: 'description ref2'
 			},
 			{
-				author: [],
-				year: '',
-				journal: '',
-				title: "Picard R. W., Vyzas E., & Healey J. . “Toward Machine Emotional Intelligence: Analysis of Affective Physiological State”, IEEE Transactions on Patterns Analysis and MachineIntelligence, 23, 1175-1191, 2001.",
+				author: [
+					{firstname: 'R. W.', lastname: 'Picard', email: ''},
+					{firstname: 'E.', lastname: 'Vyzas', email: ''},
+					{firstname: 'J.', lastname: 'Healey', email: ''}
+				],
+				date: '2001',
+				journal: 'IEEE Transactions on Patterns Analysis and Machine Intelligence',
+				title: "Toward Machine Emotional Intelligence: Analysis of Affective Physiological State",
 				categories: [
 					{
 						name: 'Psychologie',
@@ -61,7 +67,7 @@
 			},
 			{
 				author: [],
-				year: '',
+				date: '',
 				journal: '',
 				title: 'Davidson R.J., Jackson D.C., Kalin N.H. . “Emotion, plasticity, context and regulation: Perspectives from affective neuroscience”, Psychological Bulletin 126, 890-909, 2000.',
 				categories: [],
@@ -70,7 +76,7 @@
 			},
 			{
 				author: [],
-				year: '',
+				date: '',
 				journal: '',
 				title: 'L. Devillers, I. Vasilescu: “Reliability of Lexical and Prosodic cues in two real-life spoken dialog corpora”, LREC, Lisbonne, May 2004.',
 				categories: [],
@@ -79,7 +85,7 @@
 			},
 			{
 				author: [],
-				year: '',
+				date: '',
 				journal: '',
 				title: 'L. Devillers, I. Vasilescu: “Reliability of Lexical and Prosodic cues in two real-life spoken dialog corpora”, LREC, Lisbonne, May 2004.',
 				categories: [],
@@ -88,7 +94,7 @@
 			},
 			{
 				author: [],
-				year: '',
+				date: '',
 				journal: '',
 				title: 'L. Devillers, I. Vasilescu: “Reliability of Lexical and Prosodic cues in two real-life spoken dialog corpora”, LREC, Lisbonne, May 2004.',
 				categories: [],

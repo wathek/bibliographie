@@ -1,0 +1,20 @@
+.article-journal {
+	font-style: italic;
+}
+
+.article-author {
+}
+
+.article-title {
+}
+
+.article-date {
+}
+
+.article-category {
+	color: white;
+	padding: 5px;
+	margin-right: 5px;
+	border-radius: 10px;
+	font-size: 11px;
+}

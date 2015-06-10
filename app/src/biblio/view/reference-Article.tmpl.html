@@ -1,6 +1,21 @@
-<span ng-repeat='author in ref.author' ng-if='ref.author.length <= 2'>
-	{{ author.lastname }}, {{ author.firstname }}, 
-</span>
-<span ng-if='ref.author.length > 2'>
-	{{ ref.author[0].lastname }}, {{ ref.author[0].firstname }} et al.
-</span>
+<!--<span ng-if='ref.author.length > 2'>
+	Ref: {{ ref.author[0].lastname }}, {{ ref.author[0].firstname }} et al.
+</span>-->
+
+
+<div>
+
+
+	<div class="article-def">
+		<span ng-repeat='author in ref.author' class="article-author">{{ author.lastname }}, {{ author.firstname }},</span>
+		<span class="article-title">"{{ ref.title }}",</span>
+		<span class="article-journal">{{ ref.journal }},</span>
+		<span class="article-date">{{ ref.date }}</span>
+		<span class="article-point">.</span>
+	</div>
+	
+	<div class="article-categories">
+		<span ng-repeat='cat in ref.categories' class='article-category {{ cat.color }}'>{{ cat.name }}</span>
+	</div>
+
+</div>
