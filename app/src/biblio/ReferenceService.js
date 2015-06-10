@@ -7,7 +7,10 @@
 	function ReferenceService($q){
 		var references = [
 			{
-				author: [],
+				author: [
+					{firstname: 'firstname1', lastname: 'lastname1', email: ''},
+					{firstname: 'firstname2', lastname: 'lastname2', email: ''}
+				],
 				year: '',
 				journal: '',
 				title: 'L. Devillers, I. Vasilescu: “Reliability of Lexical and Prosodic cues in two real-life spoken dialog corpora”, LREC, Lisbonne, May 2004.',
@@ -25,7 +28,11 @@
 				added_at: 'description ref1'
 			},
 			{
-				author: [],
+				author: [
+					{firstname: 'firstname3', lastname: 'lastname3', email: ''},
+					{firstname: 'firstname4', lastname: 'lastname4', email: ''},
+					{firstname: 'firstname5', lastname: 'lastname5', email: ''}
+				],
 				year: '',
 				journal: '',
 				title: 'A. Batliner, K. Fischer, R. Huber, J. Spilker, E. Noth, "Desperately Seeking Emotion or: Actors, Wizards and Human Beings", Proceedings of ITRW on Speech and Emotion, Newcastle, Northern Ireland, UK, 2000.',

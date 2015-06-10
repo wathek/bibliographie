@@ -1,1 +1,6 @@
-{{ ref }}
+<span ng-repeat='author in ref.author' ng-if='ref.author.length <= 2'>
+	{{ author.lastname }}, {{ author.firstname }}, 
+</span>
+<span ng-if='ref.author.length > 2'>
+	{{ ref.author[0].lastname }}, {{ ref.author[0].firstname }} et al.
+</span>
