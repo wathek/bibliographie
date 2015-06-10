@@ -1,1 +1,26 @@
-reference type Book {{ ref.name }}
+<!--<span ng-if='ref.author.length > 2'>
+	Ref: {{ ref.author[0].lastname }}, {{ ref.author[0].firstname }} et al.
+</span>-->
+
+
+<div layout="row" layout-align="center center">
+
+	<div flex="5">
+		<img ng-src="assets/svg/book-icon.svg" class="face book-icon" alt="book">
+	</div>
+
+	<div flex="95">
+		<div class="book-def">
+			<span ng-repeat='author in ref.author' class="book-author"><span class="book-author-lastname">{{ author.lastname }}</span>, {{ author.firstname }},</span>
+			<span class="book-title">"{{ ref.title }}",</span>
+			<span class="book-journal">{{ ref.journal }},</span>
+			<span class="book-date">{{ ref.date }}</span>
+			<span class="book-point">.</span>
+		</div>
+		
+		<div class="book-categories">
+			<span ng-repeat='cat in ref.categories' class='article-category {{ cat.color }}'>{{ cat.name }}</span>
+		</div>
+	</div>
+
+</div>

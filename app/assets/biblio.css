@@ -19,6 +19,9 @@
 	font-size: 11px;
 }
 
-.article-icon {
+.article-icon, .book-icon {
 	width: 50px;
+}
+
+.book-author-lastname {
 }
