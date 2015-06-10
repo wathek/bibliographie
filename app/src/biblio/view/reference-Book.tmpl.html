@@ -11,15 +11,15 @@
 
 	<div flex="95">
 		<div class="book-def">
-			<span ng-repeat='author in ref.author' class="book-author"><span class="book-author-lastname">{{ author.lastname }}</span>, {{ author.firstname }},</span>
+			<span ng-repeat='author in ref.author' class="book-author">{{ author.firstname }} {{ author.lastname }},</span>
 			<span class="book-title">"{{ ref.title }}",</span>
-			<span class="book-journal">{{ ref.journal }},</span>
+			<span class="book-journal">{{ ref.editor }},</span>
 			<span class="book-date">{{ ref.date }}</span>
 			<span class="book-point">.</span>
 		</div>
 		
 		<div class="book-categories">
-			<span ng-repeat='cat in ref.categories' class='article-category {{ cat.color }}'>{{ cat.name }}</span>
+			<span ng-repeat='cat in ref.categories' class='book-category {{ cat.color }}'>{{ cat.name }}</span>
 		</div>
 	</div>
 

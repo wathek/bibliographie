@@ -1,1 +1,26 @@
-reference type Thesis {{ ref.name }}
+<!--<span ng-if='ref.author.length > 2'>
+	Ref: {{ ref.author[0].lastname }}, {{ ref.author[0].firstname }} et al.
+</span>-->
+
+
+<div layout="row" layout-align="center center">
+
+	<div flex="5">
+		<img ng-src="assets/svg/thesis-icon.svg" class="face thesis-icon" alt="thesis">
+	</div>
+
+	<div flex="95">
+		<div class="thesis-def">
+			<span ng-repeat='author in ref.author' class="thesis-author">{{ author.firstname }} {{ author.lastname }},</span>
+			<span class="thesis-title">"{{ ref.title }}",</span>
+			<span class="thesis-journal">{{ ref.editor }},</span>
+			<span class="thesis-date">{{ ref.date }}</span>
+			<span class="thesis-point">.</span>
+		</div>
+		
+		<div class="thesis-categories">
+			<span ng-repeat='cat in ref.categories' class='thesis-category {{ cat.color }}'>{{ cat.name }}</span>
+		</div>
+	</div>
+
+</div>

@@ -11,7 +11,7 @@
 .article-date {
 }
 
-.article-category {
+.article-category, .book-category, .thesis-category, .chapter-category {
 	color: white;
 	padding: 5px;
 	margin-right: 5px;
@@ -19,9 +19,7 @@
 	font-size: 11px;
 }
 
-.article-icon, .book-icon {
+.article-icon, .book-icon, .chapter-icon, .thesis-icon {
 	width: 50px;
 }
 
-.book-author-lastname {
-}

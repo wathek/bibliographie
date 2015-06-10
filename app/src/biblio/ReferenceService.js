@@ -68,25 +68,34 @@
 			{
 				author: [],
 				date: '',
-				journal: '',
+				editor: '',
+				bookTitle: '',
 				title: 'Davidson R.J., Jackson D.C., Kalin N.H. . “Emotion, plasticity, context and regulation: Perspectives from affective neuroscience”, Psychological Bulletin 126, 890-909, 2000.',
 				categories: [],
 				type: 'Chapter',
 				added_at: 'description ref1'
 			},
 			{
-				author: [],
-				date: '',
-				journal: '',
-				title: 'L. Devillers, I. Vasilescu: “Reliability of Lexical and Prosodic cues in two real-life spoken dialog corpora”, LREC, Lisbonne, May 2004.',
-				categories: [],
+				author: [
+					{firstname: 'Randolph R.', lastname: 'CORNELIUS', email: ''},
+				],
+				date: '1996',
+				editor: 'Prentice-Hall, Inc. Upper Saddle River, NJ 07458.',
+				title: 'The Science Of Emotion',
+				categories: [
+					{
+						name: 'Psychologie',
+						color: 'red'
+					}
+				],
 				type: 'Book',
 				added_at: 'description ref1'
 			},
 			{
 				author: [],
 				date: '',
-				journal: '',
+				editor: '',
+				bookTitle: '',
 				title: 'L. Devillers, I. Vasilescu: “Reliability of Lexical and Prosodic cues in two real-life spoken dialog corpora”, LREC, Lisbonne, May 2004.',
 				categories: [],
 				type: 'Chapter',
