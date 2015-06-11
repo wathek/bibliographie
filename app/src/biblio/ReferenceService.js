@@ -66,12 +66,19 @@
 				added_at: 'description ref1'
 			},
 			{
-				author: [],
-				date: '',
-				editor: '',
-				bookTitle: '',
-				title: 'Davidson R.J., Jackson D.C., Kalin N.H. . “Emotion, plasticity, context and regulation: Perspectives from affective neuroscience”, Psychological Bulletin 126, 890-909, 2000.',
-				categories: [],
+				author: [
+					{firstname: 'Randolph R.', lastname: 'CORNELIUS', email: ''},
+				],
+				date: '1996',
+				editor: 'Prentice-Hall, In. Upper Saddle River, NJ 07458',
+				bookTitle: 'The Science Of Emotion',
+				title: 'Feeling is Thinking: The cognitive Perspective',
+				categories: [
+					{
+						name: 'Psychologie',
+						color: 'red'
+					}
+				],
 				type: 'Chapter',
 				added_at: 'description ref1'
 			},

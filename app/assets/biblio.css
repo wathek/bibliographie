@@ -1,11 +1,11 @@
-.article-journal {
+.article-journal, .book-editor, .chapter-editor {
+}
+
+.article-author, .book-author, .chapter-author {
+}
+
+.article-title, .book-title, .chapter-title, .thesis-title {
 	font-style: italic;
-}
-
-.article-author {
-}
-
-.article-title {
 }
 
 .article-date {
@@ -17,9 +17,15 @@
 	margin-right: 5px;
 	border-radius: 10px;
 	font-size: 11px;
+	margin-left: 15px;
 }
 
 .article-icon, .book-icon, .chapter-icon, .thesis-icon {
-	width: 50px;
+	width: 100%;
+	max-width: 50px !important;
 }
 
+.article-def, .chapter-def, .book-def, .thesis-def {
+	line-height: 1.3;
+	margin-left: 15px;
+}

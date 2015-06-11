@@ -12,9 +12,9 @@
 	<div flex="95">
 		<div class="book-def">
 			<span ng-repeat='author in ref.author' class="book-author">{{ author.firstname }} {{ author.lastname }},</span>
-			<span class="book-title">"{{ ref.title }}",</span>
-			<span class="book-journal">{{ ref.editor }},</span>
-			<span class="book-date">{{ ref.date }}</span>
+			<span class="book-title">{{ ref.title }},</span>
+			<span class="book-editor">{{ ref.editor }},</span>
+			<span class="book-date">({{ ref.date }})</span>
 			<span class="book-point">.</span>
 		</div>
 		

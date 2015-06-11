@@ -11,10 +11,10 @@
 
 	<div flex="95">
 		<div class="article-def">
-			<span ng-repeat='author in ref.author' class="article-author">{{ author.lastname }}, {{ author.firstname }},</span>
+			<span ng-repeat='author in ref.author' class="article-author">{{ author.lastname }}, {{ author.firstname }}, </span>
 			<span class="article-title">"{{ ref.title }}",</span>
 			<span class="article-journal">{{ ref.journal }},</span>
-			<span class="article-date">{{ ref.date }}</span>
+			<span class="article-date">({{ ref.date }})</span>
 			<span class="article-point">.</span>
 		</div>
 		
