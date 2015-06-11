@@ -16,8 +16,31 @@ $app->get('/categories', function() {
 
     $rows = $db->select("categories", "id,name,color,description", array(), "ORDER BY name");
     $categories = $rows["data"];
-	
+
     echoResponse(200, $categories);
+});
+
+$app->get('/references', function() {
+	global $db;
+
+    $rows = $db->select("references", "id, date, type, editor, title, bookTitle", array(), "ORDER BY id DESC");
+	$references = $rows["data"];
+
+	foreach($references as &$ref) {
+		// Récupération des auteurs
+		$rows = $db->select("authors", "id, firstname, lastname, email", array("idReference" => $ref["id"]), "");
+		$ref["author"] = $rows["data"];
+
+		// Récupération des catégories
+		$rows = $db->query("SELECT categories.name, categories.color
+							FROM categories
+							JOIN categoryreference ON categories.id = categoryreference.idCategory AND categoryreference.idReference = " . $ref["id"] . "
+							ORDER BY categories.name");
+		
+		$ref["categories"] = $rows["data"];
+	}
+	
+	echoResponse(200, $references);
 });
 
 function echoResponse($status_code, $response) {

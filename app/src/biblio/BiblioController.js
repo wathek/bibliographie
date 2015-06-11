@@ -20,13 +20,6 @@
 				};
 			});
 
-	/**
-	* Main Controller for the Angular Material Starter App
-	* @param $scope
-	* @param $mdSidenav
-	* @param avatarsService
-	* @constructor
-	*/
 	function BiblioController($scope, categoryService, colorService, referenceService, $mdSidenav, $mdBottomSheet, $mdDialog, $log, $q) {
 		var self = this;
 
@@ -59,7 +52,7 @@
 
 		referenceService.loadAllReferences()
 						.then(function(references) {
-							self.references = [].concat(references);
+							self.references = [].concat(references.data);
 						});
 
 

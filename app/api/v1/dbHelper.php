@@ -26,7 +26,7 @@ class dbHelper {
 				$a[":".$key] = $value;
 			}
 
-			$stmt = $this->db->prepare("select ".$columns." from ".$table." where 1=1 ". $w." ".$order);
+			$stmt = $this->db->prepare("select ".$columns." from `".$table."` where 1=1 ". $w." ".$order);
 			$stmt->execute($a);
 			$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			if(count($rows)<=0){
@@ -43,7 +43,30 @@ class dbHelper {
 			$response["data"] = null;
 		}
 		return $response;
-	}    
+	}
+
+	function query($q) {
+		try {
+			$stmt = $this->db->query($q, PDO::FETCH_ASSOC);
+			$stmt->execute();
+			$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+			if (count($rows) <= 0) {
+				$response["status"] = "warning";
+				$response["message"] = "No data found.";
+			} else {
+				$response["status"] = "success";
+				$response["message"] = "Data selected from database";
+			}
+			$response["data"] = $rows;
+		} catch (PDOException $e) {
+			$response["status"] = "error";
+			$response["message"] = 'Select Failed: ' .$e->getMessage();
+			$response["data"] = null;
+		}
+
+		return $response;
+	}
 }
  
 ?>
