@@ -26,6 +26,43 @@ $app->get('/references', function() {
     $rows = $db->select("references", "id, date, type, editor, title, bookTitle", array(), "ORDER BY id DESC");
 	$references = $rows["data"];
 
+	$references = retrieveReferencesAuthorsAndCategories($references);
+
+	echoResponse(200, $references);
+});
+
+$app->get('/references/:search', function($search) {
+	global $db;
+	
+	$search = filter_var($search, FILTER_SANITIZE_STRING);
+
+	if (!empty($search)) {
+		$rows = $db->query("SELECT id, date, type, editor, title, bookTitle 
+							FROM `references`
+							WHERE title LIKE '%$search%'
+							OR bookTitle LIKE '%$search%'
+							OR editor LIKE '%$search%'
+							OR type LIKE '%$search%'
+							UNION
+							SELECT `references`.id, `references`.date, `references`.type, `references`.editor, `references`.title, `references`.bookTitle
+							FROM `references`
+							JOIN authors ON authors.idReference = `references`.id AND (authors.email LIKE '%$search%' OR authors.firstname LIKE '%$search%' OR lastname LIKE '%$search%')
+							ORDER BY id DESC");
+	} else {
+		$rows = $db->select("references", "id, date, type, editor, title, bookTitle", array(), "ORDER BY id DESC");
+	}
+
+	$references = $rows["data"];
+	
+	$references = retrieveReferencesAuthorsAndCategories($references);
+
+	echoResponse(200, $references);
+
+});
+
+function retrieveReferencesAuthorsAndCategories($references) {
+	global $db;
+
 	foreach($references as &$ref) {
 		// Récupération des auteurs
 		$rows = $db->select("authors", "id, firstname, lastname, email", array("idReference" => $ref["id"]), "");
@@ -40,8 +77,8 @@ $app->get('/references', function() {
 		$ref["categories"] = $rows["data"];
 	}
 	
-	echoResponse(200, $references);
-});
+	return $references;
+}
 
 function echoResponse($status_code, $response) {
     global $app;

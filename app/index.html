@@ -116,7 +116,7 @@
 			<form name="projectForm" flex>
 				<md-input-container>
 					<label>Rechercher référence</label>
-					<input name="description" ng-model="ul.searchReference">
+					<input name="description" ng-model="searchReference">
 				</md-input-container>
 			</form>
 
@@ -125,7 +125,7 @@
 	
 		<md-list>
 			<md-subheader class="md-no-sticky">Liste des références</md-subheader>
-			<md-list-item ng-repeat="ref in ul.references" ng-click="goToRef(ref.url, $event)" style="margin-bottom: 10px;" aria-label="{{ ref.type }}">
+			<md-list-item ng-repeat="ref in ul.references | filter:filterByRef" ng-click="goToRef(ref.url, $event)" style="margin-bottom: 10px;" aria-label="{{ ref.type }}">
 				<reference data="{{ ref }}" style="width: 100%"></reference>
 			</md-list-item>
 		</md-list>	

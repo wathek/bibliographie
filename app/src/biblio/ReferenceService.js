@@ -6,12 +6,19 @@
 
 	function ReferenceService($q, $http, API_ENDPOINT){
 		return {
-			loadAllReferences : function() {
+			loadAllReferences: function() {
 				var promise = $http.get(API_ENDPOINT + 'references').then(function(results) {
                         return results;
                     });
 
                 return promise;
+			},
+			findReferences: function(search) {
+				var promise = $http.get(API_ENDPOINT + 'references/' + search).then(function(results) {
+					return results;
+				});
+
+				return promise;
 			}
 		};
 	}

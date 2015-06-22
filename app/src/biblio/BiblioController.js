@@ -60,6 +60,18 @@
 		// Internal methods
 		// *********************************
 
+
+
+		$scope.$watch('searchReference', function(value) {
+			regex = new RegExp('\\b' + escapeRegExp(value), 'i');
+			console.log(regex);
+		});
+
+		$scope.filterByRef = function(s) {
+			if (!$scope.search) return true;
+			return regex.test(s);
+		};
+
 		function querySearchCategory(query) {
 			var results = query ? self.categories.filter(createFilterFor(query)) : [];
 			return results;
@@ -153,3 +165,7 @@
 	}
 
 })();
+
+function escapeRegExp(string){
+	return string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+}		
