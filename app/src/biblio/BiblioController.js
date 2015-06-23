@@ -60,7 +60,19 @@
 		// Internal methods
 		// *********************************
 
-
+		$scope.searchByCat = function(element) {
+			if (self.selectedCategories.length == 0)
+				return true;
+			
+			for (i=0; i < self.selectedCategories.length; i++) {
+				for (j=0; j < element.categories.length; j++) {
+					if (self.selectedCategories[i].name == element.categories[j].name)
+						return true;
+				}
+			}
+			
+			return false;
+		}
 
 		function querySearchCategory(query) {
 			var results = query ? self.categories.filter(createFilterFor(query)) : [];
