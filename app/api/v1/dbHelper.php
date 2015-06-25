@@ -45,6 +45,38 @@ class dbHelper {
 		return $response;
 	}
 
+	function insert($table, $data) {
+		try {
+			$c = ""; // columns
+			$b = ""; // bindings
+			$v = array(); // values
+
+			foreach ($data as $key => $value) {
+				$c .= $key . ", ";
+				$b .= ":". $key . ", ";
+				$v[":".$key] = $value;
+			}
+
+			$c = substr($c, 0, -2); // remove last two chars
+			$b = substr($b, 0, -2); // remove last two chars
+
+			$stmt = $this->db->prepare("INSERT INTO $table ($c) VALUES ($b)");
+			$stmt->execute($v);
+
+			$id = $this->db->lastInsertId();
+
+			$response["status"] = "success";
+			$response["message"] ="Data inserted";
+			$response["data"] = $id;
+		} catch (PDOException $e) {
+			$response["status"] = "error";
+			$response["message"] = 'insert failed: ' .$e->getMessage();
+			$response["data"] = null;
+		}
+
+		return $response;
+	}
+
 	function query($q) {
 		try {
 			$stmt = $this->db->query($q, PDO::FETCH_ASSOC);

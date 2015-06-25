@@ -11,6 +11,9 @@ $app = \Slim\Slim::getInstance();
 $db = new dbHelper();
 
  
+/***
+ * Categories
+ ***/
 $app->get('/categories', function() {
     global $db;
 
@@ -20,6 +23,27 @@ $app->get('/categories', function() {
     echoResponse(200, $categories);
 });
 
+$app->post('/category/:name/:color', function($name, $color) {
+	global $db;
+
+	$name = trim($name);
+	$color = trim($color);
+
+	if (empty($name) || empty($color)) {
+		echoResponse(400, array());
+		return;
+	}
+
+	$result = $db->insert("categories", array("name" => $name, "color" => $color));
+
+	echoResponse(200, array("status" => $result));
+		
+});
+
+
+/***
+ * References
+ ***/
 $app->get('/references', function() {
 	global $db;
 
@@ -60,6 +84,10 @@ $app->get('/references/:search', function($search) {
 
 });
 
+
+/***
+ * Extra functions
+ ***/
 function retrieveReferencesAuthorsAndCategories($references) {
 	global $db;
 
