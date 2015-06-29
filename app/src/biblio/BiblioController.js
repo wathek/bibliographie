@@ -121,6 +121,7 @@
 				if (answer.name != null) {
 					answer._lowername = answer.name.toLowerCase();
 					self.categories.push(answer);
+					
 				}
 			}, function() {
 			});

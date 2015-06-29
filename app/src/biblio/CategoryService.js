@@ -17,6 +17,10 @@
 				});
 
 				return promise;
+			},
+
+			addCategory: function(data) {
+//				var promise = $http.post(API_ENDPOINT + 'category', data)
 			}
 		};
 	}
