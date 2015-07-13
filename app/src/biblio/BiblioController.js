@@ -135,30 +135,39 @@
 		* Show the bottom sheet
 		*/
 		function showAddNewReference($event) {
-			var user = self.selected;
-
 			return $mdBottomSheet.show({
 				parent: angular.element(document.getElementById('content')),
-				templateUrl: './src/users/view/contactSheet.html',
-				controller: [ '$mdBottomSheet', ContactPanelController],
-				controllerAs: "cp",
-				bindToController : true,
+				templateUrl: './src/biblio/view/addNewReference.tmpl.html',
+				controller: [ '$mdBottomSheet', AddReferenceController],
+				controllerAs: "newRefController",
 				targetEvent: $event
 			}).then(function(clickedItem) {
 				clickedItem && $log.debug( clickedItem.name + ' clicked!');
 			});
 
 			/**
-			* Bottom Sheet controller for the Avatar Actions
+			* Bottom Sheet controller
 			*/
-			function ContactPanelController( $mdBottomSheet ) {
-				this.user = user;
-				this.actions = [
-					{ name: 'Phone'       , icon: 'phone'       , icon_url: 'assets/svg/phone.svg'},
-					{ name: 'Twitter'     , icon: 'twitter'     , icon_url: 'assets/svg/twitter.svg'},
-					{ name: 'Google+'     , icon: 'google_plus' , icon_url: 'assets/svg/google_plus.svg'},
-					{ name: 'Hangout'     , icon: 'hangouts'    , icon_url: 'assets/svg/hangouts.svg'}
+			function AddReferenceController( $mdBottomSheet ) {
+				this.types = [
+					{ name: 'Article', value: 'Article' },
+					{ name: 'Chapitre', value: 'Chapter' },
+					{ name: 'Livre', value: 'Book' },
+					{ name: 'Thèse', value: 'Thesis' },
 				];
+
+				this.authors = [
+					{ name: 'toto' },
+					{ name: 'picsou' },
+					{ name: 'picsou' },
+					{ name: 'picsou' },
+					{ name: 'donald' },
+					{ name: 'donald' },
+					{ name: 'donald' },
+					{ name: 'mickey' }
+				]
+
+				this.selectedType = this.types[0].value;
 
 				this.submitContact = function(action) {
 					$mdBottomSheet.hide(action);

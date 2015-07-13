@@ -1,0 +1,51 @@
+<md-bottom-sheet class="md-grid">
+	<md-content layout-padding>
+		<form ng-submit="submit()">
+			<div layout laytout-sm="column">
+				<md-radio-group ng-model="newRefController.selectedType">
+					<md-radio-button ng-repeat="d in newRefController.types"
+									 ng-value="d.value"
+									 class="RefTypeRadio">{{ d.name }}</md-radio-button>
+				</md-radio-group>
+			</div>
+			<div layout layout-sm="column">
+				<md-input-container style="width:100%">
+					<label>Titre</label>
+					<input ng-model="newRefController.title" required>
+				</md-input-container>
+			</div>
+
+			<div layout layout-sm="column">
+				<md-input-container flex ng-if="newRefController.selectedType == 'Chapter'">
+					<label>Titre du livre</label>
+					<input ng-model="newRefController.bookTitle" required>
+				</md-input-container>
+
+				<md-input-container flex>
+					<label>Editeur</label>
+					<input ng-model="newRefController.editor" required>
+				</md-input-container>
+
+				<md-input-container style="width: 30%">
+					<label>Date</label>
+					<input type="date" ng-model="newRefController.date" required>
+				</md-input-container>
+			</div>
+
+			<div layout layout-sm="column">
+				<div style="width: 30%">
+					<md-subheader class="md-no-sticky">Liste des auteurs</md-subheader>
+					<ul>
+						<li ng-repeat="a in newRefController.authors" style="list-style: none">
+							<div layout layout-sm="column">
+								<p style="width: 90%"> {{ a.name }} </p>
+								<md-button style="width: 10%" class="md-warn">X</md-button>
+							</div>
+	<!--					<md-checkbox class="md-secondary" ng-model="topping.wanted"></md-checkbox>-->
+						</li>
+					</ul>
+				</div>
+			</div>
+		</form>
+	</md-content>
+</md-bottom-sheet>
