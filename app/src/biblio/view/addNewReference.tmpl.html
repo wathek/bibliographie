@@ -1,12 +1,14 @@
 <md-bottom-sheet class="md-grid">
 	<md-content layout-padding>
-		<form ng-submit="submit()">
-			<div layout laytout-sm="column">
+		<form ng-submit="newRefController.submit()">
+			<div layout="row" layout-align="space-between center" laytout-sm="column">
 				<md-radio-group ng-model="newRefController.selectedType">
 					<md-radio-button ng-repeat="d in newRefController.types"
 									 ng-value="d.value"
 									 class="RefTypeRadio">{{ d.name }}</md-radio-button>
 				</md-radio-group>
+				
+				<md-button class="md-raised md-primary">Ajouter Référence</md-button>
 			</div>
 			<div layout layout-sm="column">
 				<md-input-container style="width:100%">
@@ -33,17 +35,56 @@
 			</div>
 
 			<div layout layout-sm="column">
+				<md-chips 
+	                ng-model="newRefController.selectedCategories" 
+	                md-autocomplete-snap 
+	                md-require-match>
+	                <md-autocomplete
+	                    md-selected-item="newRefController.selectedCategory"
+	                    md-search-text="newRefController.searchTextCategory"
+	                    md-items="item in newRefController.querySearchCategory(newRefController.searchTextCategory)"
+	                    md-item-text="item.name"
+	                    placeholder="Sélectionner categorie">
+	                        <span md-highlight-text="newRefController.searchTextCategory">{{item.name}}</span>
+    	            </md-autocomplete>
+	                <md-chip-template>
+	                    <strong>{{$chip.name}}</strong>
+	                </md-chip-template>
+	            </md-chips>
+			</div>
+
+			<div layout layout-sm="column">
 				<div style="width: 30%">
 					<md-subheader class="md-no-sticky">Liste des auteurs</md-subheader>
 					<ul>
 						<li ng-repeat="a in newRefController.authors" style="list-style: none">
 							<div layout layout-sm="column">
-								<p style="width: 90%"> {{ a.name }} </p>
-								<md-button style="width: 10%" class="md-warn">X</md-button>
+								<p style="width: 90%"> {{ a.firstName }} {{ a.lastName }}</p>
+								<md-button style="width: 10%" class="md-warn" ng-click="newRefController.removeAuthor($index)">X</md-button>
 							</div>
-	<!--					<md-checkbox class="md-secondary" ng-model="topping.wanted"></md-checkbox>-->
 						</li>
 					</ul>
+				</div>
+				<div style="width: 40%">
+					<md-subheader class="md-no-sticky">Ajouter un auteur</md-subheader>
+					<md-input-container>
+						<label>Nom</label>
+						<input ng-model="newAuthorLastName">
+					</md-input-container>
+					
+					<md-input-container>
+						<label>Prénom</label>
+						<input ng-model="newAuthorFirstName">
+					</md-input-container>
+
+					<md-input-container>
+						<label>E-mail</label>
+						<input ng-model="newAuthorEmail">
+					</md-input-container>
+				
+					<div layout="row" layout-align="end center">	
+						<md-button class="md-raised" ng-click="newRefController.addAuthor(newAuthorLastName, newAuthorFirstName, newAuthorEmail)">Ajouter</md-button>
+					</div>
 				</div>
 			</div>
 		</form>

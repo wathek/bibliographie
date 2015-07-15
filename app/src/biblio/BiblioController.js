@@ -140,10 +140,10 @@
 				templateUrl: './src/biblio/view/addNewReference.tmpl.html',
 				controller: [ '$mdBottomSheet', AddReferenceController],
 				controllerAs: "newRefController",
-				targetEvent: $event
-			}).then(function(clickedItem) {
+//				targetEvent: $event
+			}); /*.then(function(clickedItem) {
 				clickedItem && $log.debug( clickedItem.name + ' clicked!');
-			});
+			});*/
 
 			/**
 			* Bottom Sheet controller
@@ -156,22 +156,31 @@
 					{ name: 'Thèse', value: 'Thesis' },
 				];
 
-				this.authors = [
-					{ name: 'toto' },
-					{ name: 'picsou' },
-					{ name: 'picsou' },
-					{ name: 'picsou' },
-					{ name: 'donald' },
-					{ name: 'donald' },
-					{ name: 'donald' },
-					{ name: 'mickey' }
-				]
+				this.authors = [];
+
+				this.selectedCategories = [];
+				this.selectedCategory = null;
+				this.searchTextCategory = null;
+
+				this.querySearchCategory = self.querySearchCategory;
 
 				this.selectedType = this.types[0].value;
 
-				this.submitContact = function(action) {
+/*				this.submitContact = function(action) {
 					$mdBottomSheet.hide(action);
-				};
+				};*/
+
+				this.removeAuthor = function(index) {
+					this.authors.splice(index, 1);
+				}
+
+				this.addAuthor = function(firstNameVal, lastNameVal, emailVal) {
+					this.authors.push({firstName: firstNameVal, lastName: lastNameVal, email: emailVal});
+				}
+
+				this.submit = function() {
+					console.log(this.selectedCategories);
+				}
 			}
 		}
 	}
