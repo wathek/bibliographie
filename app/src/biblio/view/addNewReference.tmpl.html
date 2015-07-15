@@ -1,6 +1,6 @@
 <md-bottom-sheet class="md-grid">
 	<md-content layout-padding>
-		<form ng-submit="newRefController.submit()">
+		<form>
 			<div layout="row" layout-align="space-between center" laytout-sm="column">
 				<md-radio-group ng-model="newRefController.selectedType">
 					<md-radio-button ng-repeat="d in newRefController.types"
@@ -8,7 +8,7 @@
 									 class="RefTypeRadio">{{ d.name }}</md-radio-button>
 				</md-radio-group>
 				
-				<md-button class="md-raised md-primary">Ajouter Référence</md-button>
+				<md-button class="md-raised md-primary" ng-click="newRefController.submit()">Ajouter Référence</md-button>
 			</div>
 			<div layout layout-sm="column">
 				<md-input-container style="width:100%">
