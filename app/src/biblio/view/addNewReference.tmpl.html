@@ -38,13 +38,14 @@
 				<md-chips 
 	                ng-model="newRefController.selectedCategories" 
 	                md-autocomplete-snap 
-	                md-require-match>
+	                md-require-match
+					style="width: 100%">
 	                <md-autocomplete
 	                    md-selected-item="newRefController.selectedCategory"
 	                    md-search-text="newRefController.searchTextCategory"
 	                    md-items="item in newRefController.querySearchCategory(newRefController.searchTextCategory)"
 	                    md-item-text="item.name"
-	                    placeholder="Sélectionner categorie">
+	                    placeholder="Sélectionner categories">
 	                        <span md-highlight-text="newRefController.searchTextCategory">{{item.name}}</span>
     	            </md-autocomplete>
 	                <md-chip-template>
@@ -53,7 +54,7 @@
 	            </md-chips>
 			</div>
 
-			<div layout layout-sm="column">
+			<div layout layout-sm="column" style="margin-top:10px">
 				<div style="width: 30%">
 					<md-subheader class="md-no-sticky">Liste des auteurs</md-subheader>
 					<ul>
